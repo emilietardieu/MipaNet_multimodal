@@ -1,0 +1,11 @@
+# Ignorer les fichiers Python compilés
+__pycache__/
+*.pyc
+
+# Ignorer les poids pré-entraînés
+*.pth
+
+# Ignorer les checkpoints
+runs/
+wandb/
+.vscode/
