@@ -16,19 +16,11 @@ Ce travail s’inscrit dans le cadre de ma thèse, dont l’objectif est de **ca
 
   ### Encodeur
    L’encodeur est un **ResNet18**. 
-   
-   Les résidual networks (**ResNet**) ont été introduits pour répondre à une difficulté majeure dans l'entraînement des réseaux très profonds : la dégradation des performances. Contrairement au surapprentissage, ce phénomène se traduit par une baisse de précision à l'entraînement dès que le réseau dépasse une certaine profondeur, même avec une optimisation correcte.
-   Pour surmonter ce problème, les auteurs de ResNet proposent une architecture avec connexions résiduelles (skip connections) qui permet à chaque bloc de n’apprendre que la différence (le résidu) entre l’entrée et la sortie attendue, au lieu d’apprendre une transformation complète.
-   
-   Formellement, chaque bloc apprend une fonction F(x), et la sortie du bloc est : $y = F(x) + x$  
-   Cette formulation rend l’optimisation beaucoup plus facile : si $F(x)=0$, alors le bloc peut transmettre l’identité. Cela évite l'effondrement du gradient, et permet d’entraîner des réseaux beaucoup plus profonds.
 
   <img src="./assets/encodeur.png" alt="Structure du modèle" width="500"/> 
 
   ### Décodeur
    Le décodeur repose sur des blocs résiduels inversés (Inverted Residual Blocks, IRB), introduits dans **MobileNetV2**.  
-   L’idée est de reconstruire des représentations de plus en plus précises à mesure que l’on remonte les niveaux d’abstraction. À chaque étape du décodeur, les caractéristiques extraites sont projetées dans un espace de dimension plus large, où elles peuvent être transformées de façon non linéaire, puis compressées à nouveau afin de ne conserver que l’information la plus utile.  
-   Ainsi, le modèle alterne entre des phases d’expansion (qui augmentent l’expressivité) et de goulot d’étranglement (qui garantissent la compacité), ce qui permet d’obtenir un bon compromis entre précision et efficacité. 
 
   <img src="./assets/decodeur.png" alt="Structure du modèle" width="500"/> 
 

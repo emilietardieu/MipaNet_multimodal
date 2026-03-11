@@ -17,7 +17,7 @@ SOURCES = {
 #   [['IRC'], ['biomasse'], ['MNH'], ['historique']]    → 4 branches late fusion
 
 
-# BRANCHES = [['IRC'], ['biomasse']]
+# BRANCHES = [['IRC']]
 
 def get_config():
     """
@@ -86,7 +86,7 @@ def get_config():
         'testing': {
             'use_cuda'  : True,
             'dataset'   : 'format3',
-            'batch_size': 4,
+            'batch_size': 64,
             'workers'   : 4
         },
 
